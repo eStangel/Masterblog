@@ -8,11 +8,14 @@
 </head>
 <body>
     <h1>Welcome to My Flask Blog!</h1>
+    <div class="link-wrapper">
+    <a href="/add" class="pretty-link">Add a new post</a>
+    </div>
     {% for post in posts %}
     <div class="post">
         <h2>{{ post['title'] }}</h2>
-        <p><em>Written by {{ post['author'] }}</em></p>
         <p>{{ post['content'] }}</p>
+        <p><em>Written by {{ post['author'] }}</em></p>
     </div>
     {% endfor %}
 </body>
