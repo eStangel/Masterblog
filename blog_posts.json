@@ -22,11 +22,5 @@
         "author": "Eric",
         "title": "just checking",
         "content": "... that i now get a readable format in my json file"
-    },
-    {
-        "id": 5,
-        "author": "Eric",
-        "title": "This form layout... ",
-        "content": "... is better. That's for sure. But it's not really beautiful, eh?!"
     }
 ]

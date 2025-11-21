@@ -16,6 +16,9 @@
         <h2>{{ post['title'] }}</h2>
         <p>{{ post['content'] }}</p>
         <p><em>Written by {{ post['author'] }}</em></p>
+        <form action="{{ url_for('delete', post_id=post['id']) }}" method="POST">
+        <button type="submit" class="delete-button">Delete</button>
+    </form>
     </div>
     {% endfor %}
 </body>
