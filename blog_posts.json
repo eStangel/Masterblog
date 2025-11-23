@@ -20,7 +20,13 @@
     {
         "id": 4,
         "author": "Eric",
-        "title": "just checking",
+        "title": "Just checking",
         "content": "... that i now get a readable format in my json file"
+    },
+    {
+        "id": 5,
+        "author": "Eric",
+        "title": "Let's see if we can update this",
+        "content": "It works!"
     }
 ]
