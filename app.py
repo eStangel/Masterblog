@@ -6,6 +6,7 @@ app = Flask(__name__)
 
 @app.route('/')
 def index():
+    """Fetches all blog posts from the JSON file and renders the homepage."""
     blog_posts = read_file()
 
     return render_template('index.html', posts=blog_posts)
@@ -13,6 +14,7 @@ def index():
 
 @app.route('/add', methods=['GET', 'POST'])
 def add():
+    """Displays a form to add a new blog post and saves it when submitted."""
     if request.method == 'POST':
         author = request.form['author']
         title = request.form['title']
@@ -38,6 +40,7 @@ def add():
 
 @app.route('/delete/<int:post_id>', methods=['POST'])
 def delete(post_id):
+    """Deletes the blog post with the given ID and redirects to the homepage."""
     blog_posts = read_file()
 
     blog_posts = [post for post in blog_posts if post['id'] != post_id]
@@ -49,6 +52,7 @@ def delete(post_id):
 
 @app.route('/update/<int:post_id>', methods=['GET', 'POST'])
 def update(post_id):
+    """Loads a blog post for editing and updates it when the form is submitted."""
     blog_posts = read_file()
 
     post, blog_post_index = get_post_by_id(blog_posts, post_id)
@@ -78,6 +82,10 @@ def update(post_id):
 
 
 def get_post_by_id(posts, post_id):
+    """
+    Returns the blog post and its index for the given ID,
+    or (None, None) if not found.
+    """
     for i in range(len(posts)):
         if posts[i]['id'] == post_id:
           return posts[i], i
@@ -85,12 +93,14 @@ def get_post_by_id(posts, post_id):
 
 
 def read_file():
+    """Reads all blog posts from the JSON file and returns them as a list."""
     with open("blog_posts.json", "r") as f:
         blog_posts = json.load(f)
     return blog_posts
 
 
 def write_file(blog_posts):
+    """Writes the list of blog posts back to the JSON file with indentation."""
     with open("blog_posts.json", "w") as f:
         json.dump(blog_posts, f, indent=4)
 
