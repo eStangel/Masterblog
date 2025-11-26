@@ -16,13 +16,15 @@ def index():
 def add():
     """Displays a form to add a new blog post and saves it when submitted."""
     if request.method == 'POST':
-        author = request.form['author']
-        title = request.form['title']
-        content = request.form['content']
+        author = request.form.get('author', default='Guest')
+        title = request.form.get('title', default='Title')
+        content = request.form.get('content', default='Content')
 
         blog_posts = read_file()
-
-        blog_id = blog_posts[-1]['id'] + 1
+        if blog_posts:
+            blog_id = blog_posts[-1]['id'] + 1
+        else:
+            blog_id = 1
         new_blog_post = {
             "id": blog_id,
             "author": author,
@@ -59,9 +61,9 @@ def update(post_id):
     if post is None:
         return "Post not found", 404
     if request.method == 'POST':
-        author = request.form['author']
-        title = request.form['title']
-        content = request.form['content']
+        author = request.form.get('author', default='Guest')
+        title = request.form.get('title', default='Title')
+        content = request.form.get('content', default='Content')
 
         blog_posts.pop(blog_post_index)
 
@@ -94,9 +96,12 @@ def get_post_by_id(posts, post_id):
 
 def read_file():
     """Reads all blog posts from the JSON file and returns them as a list."""
-    with open("blog_posts.json", "r") as f:
-        blog_posts = json.load(f)
-    return blog_posts
+    try:
+        with open("blog_posts.json", "r") as f:
+            blog_posts = json.load(f)
+        return blog_posts
+    except FileNotFoundError:
+        return []
 
 
 def write_file(blog_posts):
