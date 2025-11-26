@@ -1,32 +1,8 @@
 [
     {
         "id": 1,
-        "author": "John Doe",
-        "title": "First Post",
-        "content": "This is my first post."
-    },
-    {
-        "id": 2,
-        "author": "Jane Doe",
-        "title": "Second Post",
-        "content": "This is another post."
-    },
-    {
-        "id": 3,
-        "author": "Eric",
-        "title": "This will work",
-        "content": "because i debugged this well.."
-    },
-    {
-        "id": 4,
-        "author": "Eric",
-        "title": "Just checking",
-        "content": "... that i now get a readable format in my json file"
-    },
-    {
-        "id": 5,
-        "author": "Eric",
-        "title": "Let's see if we can update this",
-        "content": "It works!"
+        "author": "Guest",
+        "title": "Title",
+        "content": "Content"
     }
 ]

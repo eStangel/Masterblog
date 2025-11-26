@@ -16,9 +16,9 @@ def index():
 def add():
     """Displays a form to add a new blog post and saves it when submitted."""
     if request.method == 'POST':
-        author = request.form.get('author', default='Guest')
-        title = request.form.get('title', default='Title')
-        content = request.form.get('content', default='Content')
+        author = request.form.get('author') or 'Guest'
+        title = request.form.get('title') or 'Title'
+        content = request.form.get('content') or 'Content'
 
         blog_posts = read_file()
         if blog_posts:
@@ -61,9 +61,9 @@ def update(post_id):
     if post is None:
         return "Post not found", 404
     if request.method == 'POST':
-        author = request.form.get('author', default='Guest')
-        title = request.form.get('title', default='Title')
-        content = request.form.get('content', default='Content')
+        author = request.form.get('author') or 'Guest'
+        title = request.form.get('title') or 'Title'
+        content = request.form.get('content') or 'Content'
 
         blog_posts.pop(blog_post_index)
 
